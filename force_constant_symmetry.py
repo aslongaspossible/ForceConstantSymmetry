@@ -15,7 +15,7 @@ class ForceConstantSymmetry:
     def __strToFloat(self,strLine):
         return list(map(float,strLine));
     
-    def __init__(self, fcPathname="FORCE_CONSTANTS"):
+    def __init__(self, fcPathname='FORCE_CONSTANTS'):
         with open(fcPathname, 'r') as fcFile:
             order=int(fcFile.readline());
             fcMatrix=[];
@@ -32,8 +32,21 @@ class ForceConstantSymmetry:
                     fcSubline.append(np.vstack([fcSubX, fcSubY, fcSubZ]));
                 fcMatrix.append(np.hstack(fcSubline));
             self.__originFC=np.vstack(fcMatrix);
+            symmetrize();
+   
+    def symmetrize(self):
+        originFC = self.__originFC;
+        
+        #do something to symmetrize
+        newFC = originFC;
+        #do something to symmetrize
+        
+        self.__newFC=newFC;
+        self.__ifSymmetrized = true;
+        
+    def eigVal(self, kPointPW='band.conf', sPoscarPW='SPOSCAR'):
+        if(self.__ifSymmetrized):
             
-    
                     
                     
             
